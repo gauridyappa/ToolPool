@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolPool - Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e6f2ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #0077cc;
+    }
+    .logo p {
+      font-size: 14px;
+      color: #555;
+    }
+    .tagline {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    input {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    .login-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .login-link a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <h1>ToolPool</h1>
+      <p>Share More. Spend Less.</p>
+    </div>
+    <div class="tagline">
+      <p>Find tools nearby and save money!</p>
+      <p>Join our trusted community today.</p>
+    </div>
+    <form id="signupForm">
+      <input type="text" id="fullname" placeholder="Full Name" required>
+      <span id="errorFullname" class="error">Full Name is required</span>
+
+      <input type="text" id="phone" placeholder="Phone" required>
+      <span id="errorPhone" class="error">Phone number is required</span>
+
+      <input type="email" id="email" placeholder="Email" required>
+      <span id="errorEmail" class="error">Valid email is required</span>
+
+      <input type="password" id="password" placeholder="Password" required>
+      <span id="errorPassword" class="error">Password is required</span>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Login</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get values
+      const fullname = document.getElementById('fullname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      let isValid = true;
+
+      // Validation
+      if (fullname === "") {
+        document.getElementById('errorFullname').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('errorFullname').style.display = 'none';
+      }
+
+      if (phone === "") {
+        document.getElementById('errorPhone').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('errorPhone').style.display = 'none';
+      }
+
+      if (email === "") {
+        document.getElementById('errorEmail').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('errorEmail').style.display = 'none';
+      }
+
+      if (password === "") {
+        document.getElementById('errorPassword').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('errorPassword').style.display = 'none';
+      }
+
+      // Redirect only if all fields are valid
+      if (isValid) {
+        alert("Sign up successful! Now you can log in.");
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html>

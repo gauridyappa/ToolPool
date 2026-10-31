@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolPool - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    /* Header */
+    header {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo h1 {
+      margin: 0;
+      color: #0077cc;
+    }
+    .logo p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      margin-left: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav a:hover {
+      color: #005fa3;
+    }
+
+    /* Hero */
+    .hero {
+      background: url('./images/bg_img.avif') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    .hero h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+    .btn {
+      background: #0077cc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .btn:hover {
+      background: #005fa3;
+    }
+
+    /* Featured Tools */
+    .tools {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .tools h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    figure {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+    }
+    figure img {
+      width: 100%;
+      border-radius: 8px;
+      height: 150px;
+      object-fit: cover;
+    }
+    figcaption h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      color: #0077cc;
+    }
+    figcaption p {
+      margin: 0;
+      color: #333;
+      font-weight: bold;
+    }
+    .check-btn {
+      margin-top: 10px;
+      background: #0077cc;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .check-btn:hover {
+      background: #005fa3;
+    }
+    .view-more {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+    }
+
+    /* How it works */
+    .how-it-works {
+      background: #eef6ff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .how-it-works h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .steps div {
+      background: white;
+      padding: 20px;
+      width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .steps h3 {
+      color: #0077cc;
+    }
+
+    /* Footer */
+    footer {
+      background: #0077cc;
+      color: white;
+      padding: 30px;
+      margin-top: 30px;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+    .footer-content h3 {
+      margin-bottom: 10px;
+    }
+    .footer-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-content ul li {
+      margin-bottom: 8px;
+    }
+    .footer-content ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    .footer-content ul li a:hover {
+      text-decoration: underline;
+    }
+    .copy {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>ToolPool</h1>
+      <p>Share More. Spend Less.</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="browse.html">Browse Tools</a></li>
+        <li><a href="#how" class="scroll-link">How It Works</a></li>
+        <li><a href="add_tools.html">Add Tools</a></li>
+        <li><a href="guidelines.html">Community Guidelines</a></li>
+        <li><a href="#contact" class="scroll-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <h1>Share Tools. Save Money.</h1>
+    <h2>Borrow from trusted neighbours near you</h2>
+    <a href="browse.html" class="btn">Browse Tools</a>
+  </section>
+
+  <!-- Featured Tools -->
+  <section class="tools">
+    <h2>Featured Tools</h2>
+    <div class="tool-grid">
+      <figure>
+        <img src="./images/hammer.jpeg" alt="Hammer">
+        <figcaption>
+          <h3>Hammer</h3>
+          <p>₹50/day</p>
+          <a href="details_hammer.html" class="check-btn">Check Availability</a>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="./images/srewdriver_set.jpeg" alt="Screwdriver">
+        <figcaption>
+          <h3>Screwdriver</h3>
+          <p>₹30/day</p>
+          <a href="details_screwdriver_set.html" class="check-btn">Check Availability</a>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="./images/wrench.jpeg" alt="Wrench">
+        <figcaption>
+          <h3>Wrench</h3>
+          <p>₹40/day</p>
+          <a href="details_wrench.html" class="check-btn">Check Availability</a>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="./images/drill_machine.jpeg" alt="Drill">
+        <figcaption>
+          <h3>Drill</h3>
+          <p>₹100/day</p>
+          <a href="details_drill.html" class="check-btn">Check Availability</a>
+        </figcaption>
+      </figure>
+    </div>
+    <a href="browse.html" class="view-more">View More →</a>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div><h3>1. Browse</h3><p>Find tools shared by your neighbours.</p></div>
+      <div><h3>2. Add</h3><p>Add tools on rent for your neighbours.</p></div>
+      <div><h3>3. Request</h3><p>Request to borrow or lend with a click.</p></div>
+      <div><h3>4. Connect</h3><p>Arrange pickup and return at your convenience.</p></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="browse.html">Browse Tools</a></li>
+          <li><a href="add_tools.html">Add Tools</a></li>
+          <li><a href="guidelines.html">Community Guidelines</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Email: support@toolpool.com</p>
+        <p>Phone: +91 9876543210</p>
+        <p>Location: Pune, India</p>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <p>Facebook | Twitter | Instagram</p>
+      </div>
+    </div>
+    <p class="copy">&copy; 2025 ToolPool. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('.scroll-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 50,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

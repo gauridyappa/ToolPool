@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pliers - ToolPool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo h1 { margin: 0; color: #0077cc; }
+    .logo p { margin: 0; font-size: 14px; color: #666; }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    nav li { margin-left: 20px; }
+    nav a { text-decoration: none; color: #0077cc; font-weight: bold; }
+    nav a:hover { color: #005fa3; }
+
+    .details-container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .details-container img {
+      width: 100%;
+      border-radius: 10px;
+      height: 300px;
+      object-fit: cover;
+    }
+    .tool-info h2 { color: #0077cc; margin-top: 0; }
+    .price { font-size: 20px; font-weight: bold; color: #333; }
+    .owner { font-size: 14px; color: #555; }
+    .calendar input { padding: 8px; margin-right: 10px; margin-top: 10px; }
+    .book-btn {
+      display: inline-block;
+      background: #0077cc;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .book-btn:hover { background: #005fa3; }
+    .description, .reviews { margin-top: 20px; }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #0077cc;
+      color: white;
+      padding: 30px;
+      margin-top: 30px;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .footer-content h3 { margin-bottom: 10px; }
+    .footer-content ul { list-style: none; padding: 0; }
+    .footer-content ul li { margin-bottom: 8px; }
+    .footer-content ul li a { color: white; text-decoration: none; }
+    .footer-content ul li a:hover { text-decoration: underline; }
+    .copy { text-align: center; margin-top: 20px; font-size: 14px; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <h1>ToolPool</h1>
+    <p>Share More. Spend Less.</p>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="browse.html">Browse Tools</a></li>
+      <li><a href="home.html#how">How It Works</a></li>
+      <li><a href="add_tools.html">Add Tools</a></li>
+      <li><a href="guidelines.html">Community Guidelines</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="details-container">
+  <div>
+    <img src="./images/piler_set.jpeg" alt="Pliers">
+  </div>
+  <div class="tool-info">
+    <h2 id="toolName">Pliers</h2>
+    <p class="price" id="pricePerDay">₹35/day</p>
+    <p class="owner">Owner: Rajesh Kumar</p>
+    <div class="calendar">
+      <label>Start Date: <input type="date" id="startDate"></label>
+      <label>End Date: <input type="date" id="endDate"></label>
+    </div>
+    <button class="book-btn" id="bookBtn" onclick="requestBooking()">Request to Book</button>
+
+    <div class="description">
+      <h3>Description</h3>
+      <p>Durable pliers ideal for gripping, bending, and cutting wires. Designed with a comfortable grip handle for easy use in electrical and mechanical works.</p>
+    </div>
+
+    <div class="location">
+      <h3>Location</h3>
+      <iframe src="https://maps.google.com/maps?q=pune&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+
+    <div class="reviews">
+      <h3>Reviews & Ratings</h3>
+      <p>⭐⭐⭐⭐☆ (4.2/5)</p>
+      <p>“Very handy tool, worked perfectly for my project!” - Amit</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-content">
+    <div>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="browse.html">Browse Tools</a></li>
+        <li><a href="add_tools.html">Add Tools</a></li>
+        <li><a href="guidelines.html">Community Guidelines</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>Email: support@toolpool.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Location: Pune, India</p>
+    </div>
+    <div>
+      <h3>Follow Us</h3>
+      <p>Facebook | Twitter | Instagram</p>
+    </div>
+  </div>
+  <p class="copy">&copy; 2025 ToolPool. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+
+
+
+
+
+document.getElementById('bookBtn').addEventListener('click', function() {
+  const startDate = document.getElementById('startDate').value;
+  const endDate = document.getElementById('endDate').value;
+
+  if (!startDate || !endDate) {
+    alert("Please select both start and end dates.");
+    return;
+  }
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+  // Tool name & price dynamically fetched
+  const toolName = document.getElementById('toolName').innerText;
+  const pricePerDay = parseInt(document.getElementById('pricePerDay').innerText.replace('₹', '').replace('/day', ''));
+  const totalAmount = days * pricePerDay;
+
+  // Redirect to common payment page
+  window.location.href = `payment.html?tool=${encodeURIComponent(toolName)}&days=${days}&amount=${totalAmount}`;
+});
+
+
+
+
+
+
+
+
+
+
+function requestBooking() {
+  const start = document.getElementById('startDate').value;
+  const end = document.getElementById('endDate').value;
+
+  if (!start || !end) {
+    alert('Please select both start and end dates.');
+    return;
+  }
+
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const days = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
+
+  if (days <= 0) {
+    alert('End date must be after start date.');
+    return;
+  }
+
+  const pricePerDay = 35;
+  const total = days * pricePerDay;
+
+  alert(`Booking Confirmed!\nTool: Pliers\nDays: ${days}\nTotal Amount: ₹${total}\nPayment options will be shown next.`);
+  // Here you would redirect to payment page or show payment options
+}
+</script>
+
+</body>
+</html>

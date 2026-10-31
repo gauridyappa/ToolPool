@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolPool - Browse Tools</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f9f9f9; }
+    header { background-color: white; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .logo h1 { margin: 0; color: #0077cc; }
+    .logo p { margin: 0; font-size: 14px; color: #666; }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    nav li { margin-left: 20px; }
+    nav a { text-decoration: none; color: #0077cc; font-weight: bold; font-size: 16px; }
+    nav a:hover { color: #005fa3; }
+
+    .browse-container { display: flex; margin: 20px; }
+    .sidebar { width: 220px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-right: 20px; }
+    .sidebar h3 { margin-bottom: 10px; color: #333; }
+    .sidebar select { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px; }
+    
+    .tool-list { flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .tool-card { background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; padding: 15px; }
+    .tool-card img { width: 100%; height: 140px; border-radius: 8px; object-fit: cover; }
+    .tool-card h4 { margin: 10px 0 5px; color: #0077cc; }
+    .tool-card p { font-size: 14px; color: #555; }
+    .tool-card .rent { color: #333; font-weight: bold; margin-top: 5px; }
+    .view-btn { margin-top: 10px; background: #0077cc; color: white; padding: 8px 15px; border-radius: 6px; text-decoration: none; display: inline-block; }
+    .view-btn:hover { background: #005fa3; }
+
+    footer { background: #0077cc; color: white; padding: 30px; margin-top: 30px; }
+    .footer-content { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: left; }
+    .footer-content h3 { margin-bottom: 10px; }
+    .footer-content ul { list-style: none; padding: 0; }
+    .footer-content ul li { margin-bottom: 8px; }
+    .footer-content ul li a { color: white; text-decoration: none; }
+    .footer-content ul li a:hover { text-decoration: underline; }
+    .copy { text-align: center; margin-top: 20px; font-size: 14px; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>ToolPool</h1>
+      <p>Share More. Spend Less.</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="browse.html">Browse Tools</a></li>
+        <li><a href="home.html#how">How It Works</a></li>
+        <li><a href="add_tools.html">Add Tools</a></li>
+        <li><a href="guidelines.html">Community Guidelines</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Browse Tools -->
+  <div class="browse-container">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <select id="categorySelect">
+        <option value="hand">Hand Tools</option>
+        <option value="power">Power Tools</option>
+        <option value="outdoor">Outdoor & Gardening</option>
+        <option value="clamps">Clamps & Support</option>
+        <option value="others">Others</option>
+      </select>
+    </aside>
+
+    <main class="tool-list" id="toolList"></main>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="browse.html">Browse Tools</a></li>
+          <li><a href="add_tools.html">Add Tools</a></li>
+          <li><a href="guidelines.html">Community Guidelines</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Email: support@toolpool.com</p>
+        <p>Phone: +91 9876543210</p>
+        <p>Location: Pune, India</p>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <p>Facebook | Twitter | Instagram</p>
+      </div>
+    </div>
+    <p class="copy">&copy; 2025 ToolPool. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const toolsData = {
+      hand: [
+        { name: "Hammer", img: "images/hammer.jpeg", desc: "Strong steel hammer", rent: "₹50/day", page: "details_hammer.html" },
+        { name: "Screwdriver Set", img: "images/srewdriver_set.jpeg", desc: "Flat & Philips head", rent: "₹30/day", page: "details_screwdriver_set.html" },
+        { name: "Wrench", img: "images/wrench.jpeg", desc: "Adjustable spanner wrench", rent: "₹40/day", page: "details_wrench.html" },
+        { name: "Pliers", img: "images/piler_set.jpeg", desc: "Durable pliers for gripping", rent: "₹35/day", page: "details_pliers.html" },
+        { name: "Tape Measure", img: "images/tape_measure.jpg", desc: "Measuring tape 5m", rent: "₹20/day", page: "details_tape_measure.html" },
+        { name: "Hand Saw", img: "images/hand_saw.jpg", desc: "Wood cutting saw", rent: "₹45/day", page: "details_hand_saw.html" }
+      ],
+
+      power: [
+        { name: "Drill", img: "images/drill_machine.jpeg", desc: "Electric drill machine", rent: "₹120/day", page: "details_drill.html" },
+      { name: "Angle Grinder", img: "images/angle_grinder.jpeg", desc: "High-speed grinding tool", rent: "₹150/day", page: "details_angle_grinder.html" },
+      { name: "Jigsaw", img: "images/jigsaw.jpeg", desc: "Precision cutting jigsaw", rent: "₹130/day", page: "details_jigsaw.html" },
+      { name: "Heat Gun", img: "images/heat_gun.webp", desc: "Multi-purpose heat gun", rent: "₹110/day", page: "details_heat_gun.html" },
+      { name: "Impact Wrench", img: "images/impact_wrench.jpg", desc: "Heavy-duty impact wrench", rent: "₹160/day", page: "details_impact_wrench.html" },
+      { name: "Electric Sander", img: "images/electric_sander.jpg", desc: "Smooth finishing sander", rent: "₹140/day", page: "details_electric_sander.html" }
+      ],
+
+      outdoor: [
+        { name: "Lawn Mower", img: "images/lawn_mower.jpeg", desc: "Easy grass cutting", rent: "₹200/day", page: "details_lawn_mower.html" },
+      { name: "Hedge Trimmer", img: "images/hedge_trimmer.webp", desc: "Perfect for trimming bushes", rent: "₹90/day", page: "details_hedge_trimmer.html" },
+      { name: "Leaf Blower", img: "images/leaf_blower.jpeg", desc: "Clean up leaves efficiently", rent: "₹110/day", page: "details_leaf_blower.html" },
+      { name: "Chainsaw", img: "images/chainsaw.webp", desc: "Powerful tree cutting tool", rent: "₹180/day", page: "details_chainsaw.html" },
+      { name: "Water Hose", img: "images/water_hose.jpg", desc: "Flexible hose for gardening", rent: "₹40/day", page: "details_water_hose.html" },
+      { name: "Sprayer", img: "images/sprayer.jpg", desc: "For fertilizers and pesticides", rent: "₹60/day", page: "details_sprayer.html" }
+      ],
+
+      clamps: [
+         { name: "Bar Clamp", img: "images/bar_clamp.webp", desc: "Long reach bar clamp", rent: "₹30/day", page: "details_bar_clamp.html" },
+      { name: "C-Clamp", img: "images/c_clamp.webp", desc: "Heavy-duty C-clamp", rent: "₹25/day", page: "details_c-clamp.html" },
+      { name: "Pipe Clamp", img: "images/pipe_clamp.webp", desc: "Durable pipe clamp", rent: "₹40/day", page: "details_pipe_clamp.html" },
+      { name: "Toggle Clamp", img: "images/toggle_clamp.jpg", desc: "Secure toggle clamp", rent: "₹35/day", page: "details_toggle_clamp.html" },
+      { name: "Spring Clamp", img: "images/spring_clamp.webp", desc: "Quick-release spring clamp", rent: "₹20/day", page: "details_spring_clamp.html" },
+      { name: "Edge Clamp", img: "images/edge_clamp.webp", desc: "Edge holding clamp", rent: "₹30/day", page: "details_edge_clamp.html" }
+      ],
+
+      others: [
+        { name: "Paint Brush Set", img: "images/paint_brush_set.jpg", desc: "Set of brushes for painting", rent: "₹30/day", page: "details_paint_brush_set.html" },
+        { name: "Paint Roller", img: "images/paint_roller.jpg", desc: "Smooth rolling for painting", rent: "₹40/day", page: "details_paint_roller.html" },
+        { name: "Glue Gun", img: "images/glue_gun.webp", desc: "Hot glue gun for repairs", rent: "₹50/day", page: "details_glue_gun.html" },
+        { name: "Ladder", img: "images/ladder.jpg", desc: "6ft folding ladder", rent: "₹80/day", page: "details_ladder.html" },
+        { name: "Toolbox", img: "images/toolbox.jpg", desc: "Carry your tools easily", rent: "₹40/day", page: "details_toolbox.html" },
+        { name: "Safety Kit", img: "images/safety_kit.jpg", desc: "Helmet, gloves, and safety gear", rent: "₹60/day", page: "details_safety_kit.html" }
+      ]
+    };
+
+    const toolList = document.getElementById('toolList');
+    const categorySelect = document.getElementById('categorySelect');
+
+    function renderTools(category) {
+      toolList.innerHTML = "";
+
+      // Static tools
+      toolsData[category].forEach(tool => {
+        const card = document.createElement('div');
+        card.classList.add('tool-card');
+        card.innerHTML = `
+          <img src="${tool.img}" alt="${tool.name}">
+          <h4>${tool.name}</h4>
+          <p>${tool.desc}</p>
+          <p class="rent">${tool.rent}</p>
+          <a href="${tool.page}" class="view-btn">View Details</a>
+        `;
+        toolList.appendChild(card);
+      });
+
+      // User-added tools
+      const userTools = JSON.parse(localStorage.getItem('userTools')) || [];
+      userTools.forEach((tool, index) => {
+        const card = document.createElement('div');
+        card.classList.add('tool-card');
+        card.innerHTML = `
+          <img src="${tool.image}" alt="${tool.toolName}">
+          <h4>${tool.toolName}</h4>
+          <p>${tool.description}</p>
+          <p class="rent">₹${tool.price}/day</p>
+          <a href="details_user_tool.html?id=${index}" class="view-btn">View Details</a>
+        `;
+        toolList.appendChild(card);
+      });
+    }
+
+    categorySelect.addEventListener('change', () => {
+      renderTools(categorySelect.value);
+    });
+
+    // Initial render
+    renderTools('hand');
+  </script>
+</body>
+</html>

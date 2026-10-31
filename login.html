@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolPool - Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ffffff, #e6f2ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .logo h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #0077cc;
+    }
+    .logo p {
+      font-size: 14px;
+      color: #555;
+    }
+    h2 {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    input {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    .signup-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .signup-link a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <h1>ToolPool</h1>
+      <p>Share More. Spend Less.</p>
+    </div>
+    <h2>Welcome Back</h2>
+    <p>Login to rent or share tools</p>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email">
+      <span id="errorEmail" class="error">Email is required</span>
+
+      <input type="password" id="loginPassword" placeholder="Password">
+      <span id="errorPassword" class="error">Password is required</span>
+
+      <button type="submit">Login</button>
+    </form>
+    <div class="signup-link">
+      New here? <a href="signup.html">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      let isValid = true;
+
+      if (email === "") {
+        document.getElementById('errorEmail').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('errorEmail').style.display = 'none';
+      }
+
+      if (password === "") {
+        document.getElementById('errorPassword').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('errorPassword').style.display = 'none';
+      }
+
+      if (isValid) {
+        alert("Login successful!");
+        window.location.href = "home.html";
+      }
+    });
+  </script>
+</body>
+</html>

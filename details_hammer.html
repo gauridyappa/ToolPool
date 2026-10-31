@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hammer - Tool Details</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo h1 {
+      margin: 0;
+      color: #0077cc;
+    }
+    .logo p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav li { margin-left: 20px; }
+    nav a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+    }
+    nav a:hover { color: #005fa3; }
+
+    .details-container {
+      display: flex;
+      flex-wrap: wrap;
+      background: white;
+      margin: 30px auto;
+      width: 85%;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .details-img {
+      flex: 1;
+      min-width: 300px;
+      padding: 15px;
+    }
+    .details-img img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .details-info {
+      flex: 2;
+      padding: 20px;
+    }
+    .details-info h2 { color: #0077cc; margin-bottom: 10px; }
+    .price { font-size: 18px; font-weight: bold; margin: 10px 0; }
+    .owner { color: #555; margin-bottom: 20px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input[type="date"] {
+      padding: 8px;
+      margin-top: 5px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .book-btn {
+      display: inline-block;
+      background: #0077cc;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .book-btn:hover { background: #005fa3; }
+    
+    .map {
+      margin-top: 30px;
+      height: 250px;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .reviews {
+      background: white;
+      margin: 30px auto;
+      width: 85%;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .review-item {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+    .review-item:last-child { border-bottom: none; }
+    .reviewer { font-weight: bold; color: #333; }
+    .rating { color: #ff9800; }
+    
+    footer {
+      background: #0077cc;
+      color: white;
+      padding: 30px;
+      margin-top: 30px;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .footer-content h3 { margin-bottom: 10px; }
+    .footer-content ul { list-style: none; padding: 0; }
+    .footer-content ul li { margin-bottom: 8px; }
+    .footer-content ul li a { color: white; text-decoration: none; }
+    .footer-content ul li a:hover { text-decoration: underline; }
+    .copy {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <h1>ToolPool</h1>
+    <p>Share More. Spend Less.</p>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="browse.html">Browse Tools</a></li>
+      <li><a href="home.html#how">How It Works</a></li>
+      <li><a href="add_tools.html">Add Tools</a></li>
+      <li><a href="guidelines.html">Community Guidelines</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Tool Details -->
+<section class="details-container">
+  <div class="details-img">
+    <img src="./images/hammer.jpeg" alt="Hammer">
+  </div>
+  <div class="details-info">
+
+<!-- <h2 id="toolName">Hammer</h2>
+    <p class="price">Price: <span id="pricePerDay">₹50/day</span></p> -->
+
+
+    <h2 id="toolName">Hammer</h2>
+    <p class="price" id="pricePerDay">₹50 / day</p>
+    <p class="owner">Owner: Rajesh Kumar</p>
+    <p>A sturdy steel hammer ideal for carpentry and DIY projects. Lightweight, durable, and easy to handle for everyday home repairs.</p>
+    
+    <label for="startDate">Rent Start Date:</label>
+    <input type="date" id="startDate">
+    <label for="endDate">Rent End Date:</label>
+    <input type="date" id="endDate">
+    
+    <button class="book-btn" id="bookBtn" onclick="requestBooking()">Request to Book</button>
+    <!-- <button id="bookBtn">Request to Book</button> -->
+
+
+    <div class="map">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.513184406147!2d73.85674391539635!3d18.5204301873979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c076d38d7e9f%3A0xb9078e3b04c63ff!2sPune%20City!5e0!3m2!1sen!2sin!4v1618300038170!5m2!1sen!2sin" 
+        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews">
+  <h3>User Reviews & Ratings</h3>
+  <div class="review-item">
+    <p class="reviewer">Amit Sharma <span class="rating">★★★★★</span></p>
+    <p>Great quality hammer. Helped me complete my furniture project with ease.</p>
+  </div>
+  <div class="review-item">
+    <p class="reviewer">Priya Patel <span class="rating">★★★★☆</span></p>
+    <p>Good for light construction work. Handle is comfortable and strong.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <div class="footer-content">
+    <div>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="browse.html">Browse Tools</a></li>
+        <li><a href="add_tools.html">Add Tools</a></li>
+        <li><a href="guidelines.html">Community Guidelines</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>Email: support@toolpool.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Location: Pune, India</p>
+    </div>
+    <div>
+      <h3>Follow Us</h3>
+      <p>Facebook | Twitter | Instagram</p>
+    </div>
+  </div>
+  <p class="copy">&copy; 2025 ToolPool. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+  
+
+
+
+document.getElementById('bookBtn').addEventListener('click', function() {
+  const startDate = document.getElementById('startDate').value;
+  const endDate = document.getElementById('endDate').value;
+
+  if (!startDate || !endDate) {
+    alert("Please select both start and end dates.");
+    return;
+  }
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+  // Tool name & price dynamically fetched
+  const toolName = document.getElementById('toolName').innerText;
+  const pricePerDay = parseInt(document.getElementById('pricePerDay').innerText.replace('₹', '').replace('/day', ''));
+  const totalAmount = days * pricePerDay;
+
+  // Redirect to common payment page
+  window.location.href = `payment.html?tool=${encodeURIComponent(toolName)}&days=${days}&amount=${totalAmount}`;
+});
+
+
+
+
+
+
+
+
+
+
+  function requestBooking() {
+    const start = document.getElementById('startDate').value;
+    const end = document.getElementById('endDate').value;
+
+    if (!start || !end) {
+      alert("Please select both start and end dates to proceed.");
+      return;
+    }
+
+    // Calculate total rent
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const diffTime = Math.abs(endDate - startDate);
+    const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const pricePerDay = 50;
+    const totalAmount = days * pricePerDay;
+
+    alert(`Booking Summary:\nTool: Hammer\nTotal Days: ${days}\nTotal Price: ₹${totalAmount}\nProceed to payment page.`);
+    // window.location.href = "payment.html"; // future payment page
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Guidelines - ToolPool</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo h1 { margin: 0; color: #0077cc; }
+    .logo p { margin: 0; font-size: 14px; color: #666; }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    nav li { margin-left: 20px; }
+    nav a { text-decoration: none; color: #0077cc; font-weight: bold; font-size: 16px; }
+    nav a:hover { color: #005fa3; }
+
+    .guidelines-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .guidelines-container h2 {
+      text-align: center;
+      color: #0077cc;
+      margin-bottom: 20px;
+    }
+    ul.rules {
+      padding-left: 20px;
+      line-height: 1.8;
+      font-size: 16px;
+      color: #444;
+    }
+    .report-btn {
+      display: block;
+      background: #ff4d4d;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      margin: 30px auto 0;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .report-btn:hover { background: #cc0000; }
+
+    /* Popup Overlay */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .popup-content h3 { color: #0077cc; }
+    .popup-content textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .popup-content button {
+      background: #0077cc;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .popup-content button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>ToolPool</h1>
+      <p>Share More. Spend Less.</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="browse.html">Browse Tools</a></li>
+        <li><a href="home.html#how">How It Works</a></li>
+        <li><a href="add_tools.html">Add Tools</a></li>
+        <li><a href="guidelines.html">Community Guidelines</a></li>
+        <li><a href="home.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Guidelines Section -->
+  <div class="guidelines-container">
+    <h2>Community Guidelines</h2>
+    <ul class="rules">
+      <li>Respect your neighbors and handle all tools with care.</li>
+      <li>Return tools on the agreed date to avoid penalties.</li>
+      <li>Report any tool damage immediately to the owner.</li>
+      <li>Use tools only for their intended purpose.</li>
+      <li>Do not share borrowed tools with others without permission.</li>
+      <li>Follow all safety instructions provided with the tools.</li>
+      <li>Maintain honesty in transactions and payments.</li>
+      <li>ToolPool has zero tolerance for fraud or misuse.</li>
+    </ul>
+    <button class="report-btn" id="openReport">Report Misuse</button>
+  </div>
+
+  <!-- Popup for Reporting -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+      <h3>Report Misuse</h3>
+      <textarea id="reportText" placeholder="Describe the issue..."></textarea>
+      <button id="submitReport">Submit</button>
+      <button id="closePopup">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const openReport = document.getElementById('openReport');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closePopup = document.getElementById('closePopup');
+    const submitReport = document.getElementById('submitReport');
+    const reportText = document.getElementById('reportText');
+
+    // Show popup
+    openReport.addEventListener('click', () => {
+      popupOverlay.style.display = 'flex';
+    });
+
+    // Close popup
+    closePopup.addEventListener('click', () => {
+      popupOverlay.style.display = 'none';
+      reportText.value = '';
+    });
+
+    // Submit report (send to Flask)
+    submitReport.addEventListener('click', () => {
+      const issue = reportText.value.trim();
+      const username = prompt("Enter your name:");
+
+      if (issue === "" || !username) {
+        alert("Please enter your name and report details.");
+        return;
+      }
+
+      fetch('http://127.0.0.1:5000/submit_report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `username=${encodeURIComponent(username)}&issue=${encodeURIComponent(issue)}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        reportText.value = "";
+        popupOverlay.style.display = 'none';
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+
+</body>
+</html>

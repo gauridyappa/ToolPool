@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolPool - Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .payment-container {
+      background: white;
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .payment-container h2 {
+      color: #0077cc;
+      text-align: center;
+    }
+    .details {
+      background: #eef6ff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .details p {
+      margin: 5px 0;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0077cc;
+      color: white;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ToolPool Payment</h1>
+</header>
+
+<div class="payment-container">
+  <h2>Complete Your Payment</h2>
+
+  <div class="details">
+    <p><strong>Tool:</strong> <span id="toolName">Loading...</span></p>
+    <p><strong>Days:</strong> <span id="daysCount">0</span></p>
+    <p><strong>Total Amount:</strong> ₹<span id="totalAmount">0</span></p>
+  </div>
+
+  <form id="paymentForm">
+    <label for="paymentMethod">Select Payment Method</label>
+    <select id="paymentMethod" required>
+      <option value="">-- Choose --</option>
+      <option value="Netbanking">Netbanking</option>
+      <option value="UPI">UPI</option>
+      <option value="Debit Card">Debit Card</option>
+      <option value="Credit Card">Credit Card</option>
+    </select>
+
+    <button type="submit">Submit Payment</button>
+  </form>
+</div>
+
+<footer>
+  <p>&copy; 2025 ToolPool. All Rights Reserved.</p>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tool = urlParams.get('tool') || "Unknown";
+    const days = parseInt(urlParams.get('days') || "0");
+    const amount = parseInt(urlParams.get('amount') || "0");
+
+    document.getElementById('toolName').textContent = tool;
+    document.getElementById('daysCount').textContent = days;
+    document.getElementById('totalAmount').textContent = amount;
+
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const method = document.getElementById('paymentMethod').value;
+      if (!method) {
+        alert("Please select a payment method.");
+        return;
+      }
+      alert(`✅ Payment successful!\n\nTool: ${tool}\nDays: ${days}\nPaid: ₹${amount}\nPayment Method: ${method}`);
+      window.location.href = "home.html";
+    });
+  });
+</script>
+
+</body>
+</html>
